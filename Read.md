@@ -184,6 +184,7 @@ BinarySearch:
     Easy:
     Medium:
         Leet code 34. Find First and Last Position of Element in Sorted Array
+        Leet code 162. Find Peak Element
 
 Sliding Window / Two pointers
     Medium:
