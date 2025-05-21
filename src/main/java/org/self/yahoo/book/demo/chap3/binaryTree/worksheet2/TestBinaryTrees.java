@@ -73,7 +73,8 @@ public class TestBinaryTrees {
 
          */
         binaryTree.printBFS();     // LevelOrder : [5 1 6 4 7 3 2  ]
-        binaryTree.printInOrder(); // InOrder    : [ 22 36 41 45 66 67 75 ]
+        binaryTree.printInOrder(); // InOrder    : [ 1 2 3 4 5 6 7 ]
+        System.out.println("END....");
 
 
 

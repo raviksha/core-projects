@@ -185,6 +185,9 @@ BinarySearch:
     Medium:
         Leet code 34. Find First and Last Position of Element in Sorted Array
         Leet code 162. Find Peak Element
+        Leet code 33. Search in Rotated Sorted Array
+        Leet code 875. Koko Eating Bananas
+        Leet code 74. Search a 2D Matrix
 
 Sliding Window / Two pointers
     Medium:

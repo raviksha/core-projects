@@ -46,6 +46,14 @@ public class JustLikeThat {
         var reverseComparator = Comparator.comparingInt((Pair p) -> p.freq).reversed();
         PriorityQueue<Pair> queue = new PriorityQueue<>(reverseComparator);
 
+        int low = 5;
+        int high = 10;
+        int mid = low + (high - low) /2;
+        System.out.println("Mid V1: " + mid);
+
+        mid = (low + (high - low)) /2;
+        System.out.println("Mid V2: " + mid);
+
 
 
 
