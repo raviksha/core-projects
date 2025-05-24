@@ -39,3 +39,6 @@ jacoco.exec
 
 # IntelliJ specific caches
 /out/
+
+# target
+target/classes
