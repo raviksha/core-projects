@@ -47,6 +47,19 @@ public class Easy {
         // Leet code 108. Convert Sorted Array to Binary Search Tree
 
         int [] nums = new int[] {-10,-3,0,5,9};
+
+        /*
+            Time complexity: O(n) Loops over all the elements of the nums[]
+
+            Space complexity: O(n)
+                               O(n) n instances of TreeNode BST objects.
+                                       When analyzing auxiliary space complexity, we typically focus on the temporary space used during the execution of the algorithm,
+                                       not the space for the final output structure itself.
+
+                               O(log n): Recursion call stack
+                               NOTE : Worst case for skewed binary tree is not possible here as the BST generated is balanced
+                               Conclusion: O(log n): Extra auxiliary space used
+         */
         TreeNode root = testCovertSortedArrayToBST(nums);
         System.out.println("In Order: testCovertSortedArrayToBST: ");
         BinaryTree.printBFS(root);
