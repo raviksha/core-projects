@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BinaryTree {
-    TreeNode root;
+    static TreeNode root;
 
     public boolean get(int key) {
         if (root == null) {
@@ -137,7 +137,7 @@ public class BinaryTree {
         Space complexity: O(w): Width of the tree. w elements stored in the Queue
 
      */
-    public void printBFS() {
+    public static void printBFS(TreeNode root) {
         if (root == null) {
             System.out.println("Empty BST..");
             return;
@@ -168,7 +168,7 @@ public class BinaryTree {
 
         Space complexity: O(1)
      */
-    public void printInOrder() {
+    public static void printInOrder() {
 
         if (root == null) {
             System.out.println("Empty BST...");
@@ -184,7 +184,7 @@ public class BinaryTree {
 
         Space complexity: O(h): Height df the tree
  */
-    private void printInOrder(TreeNode root) {
+    public static void printInOrder(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -314,7 +314,7 @@ public class BinaryTree {
          */
 
 
-        binaryTree.printBFS();     // LevelOrder : [ 45 36 67 22 41 66 75  ]
+        binaryTree.printBFS(root);     // LevelOrder : [ 45 36 67 22 41 66 75  ]
         binaryTree.printInOrder(); // InOrder    : [ 22 36 41 45 66 67 75 ]
 
         // Get Min
@@ -364,7 +364,7 @@ public class BinaryTree {
            2
 
          */
-        binaryTree.printBFS();     // LevelOrder : [5 1 6 4 7 3 2  ]
+        binaryTree.printBFS(root);     // LevelOrder : [5 1 6 4 7 3 2  ]
         binaryTree.printInOrder(); // InOrder    : [ 1 2 3 4 5 6 7  ]
     }
 

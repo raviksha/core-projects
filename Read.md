@@ -189,7 +189,16 @@ BinarySearch:
         Leet code 875. Koko Eating Bananas
         Leet code 74. Search a 2D Matrix
 
+Tree Traversal - Pre Order
+    Easy:
+        Leet code 144. Binary Tree Preorder Traversal
+        Leet code 108. Convert Sorted Array to Binary Search Tree
+    Medium:
+        
+
 Sliding Window / Two pointers
+    Easy:
+        Leet code 88. Merge Sorted Array
     Medium:
         Leet code 1423. Maximum Points You Can Obtain from Cards
         Leet code 3. Longest Substring Without Repeating Characters [**]

@@ -51,6 +51,11 @@ public class Medium {
         System.out.println("***********************  Contiguous Array **********************");
         // Leet code 53. Maximum Subarray sum (Kadane Algo)
         /*
+            Approach :
+                var sum : calculates the running sum of the sub array ending at index i
+                          it resets the sub array at position i if nums[i] > sum + nums[i]
+                var maxSum: the max sub array sum found so far
+
             Time complexity: O(n): Loops over the nums [] in a single pass
 
             Space complexity : O(1): No extra compute space

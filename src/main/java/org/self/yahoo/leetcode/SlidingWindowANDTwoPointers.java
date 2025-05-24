@@ -946,6 +946,41 @@ public class SlidingWindowANDTwoPointers {
         return maxCount;
     }
 
+    private static void testMergeTwoSortedArrayV1(int[] nums1, int m, int[] nums2, int n) {
+        int [] tmp = new int[m + n];
+        int counter = 0;
+
+        int i = 0;
+        int j = 0;
+
+        while (i < m && j < n) {
+
+            if (nums1[i] <= nums2[j]) {
+                tmp[counter] = nums1[i];
+                i++;
+                counter++;
+            } else {
+                tmp[counter] = nums2[j];
+                j++;
+                counter++;
+            }
+        }
+
+        while (i < m) {
+            tmp[counter] = nums1[i];
+            i++;
+            counter++;
+        }
+
+        while (j < n) {
+            tmp[counter] = nums2[j];
+            j++;
+            counter++;
+        }
+
+        System.arraycopy(tmp, 0, nums1, 0, tmp.length);
+    }
+
 
     public static void main(String[] args) {
         System.out.println("SlidingWindowANDTwoPointers");
@@ -1350,6 +1385,61 @@ public class SlidingWindowANDTwoPointers {
         int subArrSums = testSubArrayDivisibleByK(nums, k);
         System.out.println("subArrSums: " + subArrSums);
 
+        // Leet code 88. Merge Sorted Array
+        int [] nums1 = new int[] {1,2,3,0,0,0};
+        int [] nums2 = new int[] {2,5,6};
+        int m = 3;
+        int n = 3;
+        /*
+            Approach: Use the approach of using Merge sort when merging two sorted arrays
+            Time complexity: O(m + n): m and n are the length of the nums1[] and nums2[]. Each element is traversed once
+            Space complexity:O(m + n): Extra tmp[] array used extra space to store m + n elements of nums1[] an nums2[]
+         */
+        testMergeTwoSortedArrayV1(nums1, m, nums2, n);
+        System.out.println("testMergeTwoSortedArray V1: " + Arrays.toString(nums1));
+
+        nums1 = new int[] {1,2,3,0,0,0};
+        nums2 = new int[] {2,5,6};
+        m = 3;
+        n = 3;
+
+        /*
+            Using in place update of num1[]. No extra space required
+
+            Time complexity: O(m + n) m and n are the length of the nums1[] and nums2[]. Each element is traversed once
+
+            Space complexity: O(1): Constant space. Uses inplace replacement of nums1[]
+         */
+        testMergeTwoSortedArrayV2(nums1, m, nums2, n);
+        System.out.println("testMergeTwoSortedArrayV2: " + Arrays.toString(nums1));
+
+
 
     }
+
+    private static void testMergeTwoSortedArrayV2(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n -1;
+
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] >= nums2[j]) {
+                nums1[k] = nums1[i];
+                k--;
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                k--;
+                j--;
+            }
+        }
+
+        while (j >= 0) {
+            nums1[k] = nums2[j];
+            k--;
+            j--;
+        }
+    }
+
+
 }

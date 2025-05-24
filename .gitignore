@@ -1,0 +1,41 @@
+# Maven output
+/target/
+
+# Eclipse/IDEA/NetBeans specific files
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Compiled class files
+*.class
+
+# Maven wrapper files
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/maven-wrapper.jar
+
+# Build directories
+build/
+
+# Test reports
+surefire-reports/
+jacoco.exec
+
+# IntelliJ specific caches
+/out/
