@@ -200,6 +200,7 @@ Tree Traversal
     Easy:
         Leet code 144. Binary Tree Preorder Traversal
         Leet code 108. Convert Sorted Array to Binary Search Tree
+        Leet code 94. Binary Tree Inorder Traversal
     Medium:
         Leet code 102. Binary Tree Level Order Traversal
         Leet code 199. Binary Tree Right Side View

@@ -20,6 +20,27 @@ public class Easy {
         return treeL;
     }
 
+    private static TreeNode testCovertSortedArrayToBST(int[] nums) {
+        if (nums.length == 1) {
+            return new TreeNode(nums[0]);
+        }
+        int low = 0;
+        int high = nums.length - 1;
+        return testCovertSortedArrayToBST(nums, low, high);
+    }
+
+    private static TreeNode testCovertSortedArrayToBST(int[] nums, int low, int high) {
+        if (low > high) {
+            return null;
+        }
+
+        int mid = low + (high - low) / 2;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = testCovertSortedArrayToBST(nums, low, mid -1);
+        root.right = testCovertSortedArrayToBST(nums, mid + 1, high);
+        return root;
+    }
+
     public static void main(String[] args) {
         System.out.println("Tree Traversal: Easy ...");
         // Leet code 144. Binary Tree Preorder Traversal
@@ -63,27 +84,40 @@ public class Easy {
         TreeNode root = testCovertSortedArrayToBST(nums);
         System.out.println("In Order: testCovertSortedArrayToBST: ");
         BinaryTree.printBFS(root);
+
+        // Leet code 94. Binary Tree Inorder Traversal
+        BinaryTree.initRoot();
+        binaryTree = new BinaryTree();
+        binaryTree.put(1);
+        root = binaryTree.getRoot();
+        root.right = new TreeNode(2);
+        root.right.left = new TreeNode(3);
+        List<Integer> result = new ArrayList<>();
+        /*
+            Time complexity: O(n): Traverses each element of the BST
+                             list.add(): O(1) constant time
+                             Total: O(n)
+
+            Space complexity: O(n)
+                              O(n): n elements stored in the result list
+                              O(h): Recursion stack for tree height h, worst case O(n) for skewed tree
+                              Total: O(n)
+         */
+        testInOrderTraverse(binaryTree.getRoot(), result);
+        System.out.println("testInOrderTraverse: " + result);
+
     }
 
-    private static TreeNode testCovertSortedArrayToBST(int[] nums) {
-        if (nums.length == 1) {
-            return new TreeNode(nums[0]);
-        }
-        int low = 0;
-        int high = nums.length - 1;
-        return testCovertSortedArrayToBST(nums, low, high);
-    }
-
-    private static TreeNode testCovertSortedArrayToBST(int[] nums, int low, int high) {
-        if (low > high) {
-            return null;
+    private static List<Integer> testInOrderTraverse(TreeNode root, List<Integer> list) {
+        if (root == null) {
+            return list;
         }
 
-        int mid = low + (high - low) / 2;
-        TreeNode root = new TreeNode(nums[mid]);
-        root.left = testCovertSortedArrayToBST(nums, low, mid -1);
-        root.right = testCovertSortedArrayToBST(nums, mid + 1, high);
-        return root;
+        testInOrderTraverse(root.left, list);
+        list.add(root.val);
+        testInOrderTraverse(root.right, list);
+
+        return list;
     }
 
 
