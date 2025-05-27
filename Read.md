@@ -189,19 +189,27 @@ BinarySearch:
         Leet code 875. Koko Eating Bananas
         Leet code 74. Search a 2D Matrix
 
-Tree Traversal - Pre Order
+
+Back Tracking
+    Easy:
+    Medium:
+        Leet code 22. Generate Parentheses
+        Leet code 78. Subsets
+
+Tree Traversal
     Easy:
         Leet code 144. Binary Tree Preorder Traversal
         Leet code 108. Convert Sorted Array to Binary Search Tree
     Medium:
-        
+        Leet code 102. Binary Tree Level Order Traversal
+        Leet code 199. Binary Tree Right Side View
 
 Sliding Window / Two pointers
     Easy:
         Leet code 88. Merge Sorted Array
     Medium:
         Leet code 1423. Maximum Points You Can Obtain from Cards
-        Leet code 3. Longest Substring Without Repeating Characters [**]
+        Leet code 3. Longest Substring Without Repeating Characters [**] [Top5]
         Leet code 1004. Max Consecutive Ones III
         Leet code 395. Longest Substring with At Least K Repeating Characters
         Leet code 1358. Number of Substrings Containing All Three Characters
@@ -213,3 +221,12 @@ Sliding Window / Two pointers
         Leet code : 904. Fruit Into Baskets
         Leet code: 209. Minimum Size Subarray Sum
         Leet code: 974. Subarray Sums Divisible by K
+
+
+
+Top 5
+    Merge Intervals
+    Longest Substring Without Repeating Characters
+    Best Time to Buy and Sell Stock
+    Valid Parentheses
+    Two Sum II

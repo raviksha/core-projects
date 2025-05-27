@@ -22,6 +22,10 @@ public class BinaryTree {
         return root;
     }
 
+    public static void initRoot() {
+        root = null;
+    }
+
     /*
         Time complexity: O(log n) n is the height of the tree
                          O(n): Worst case when the tree is skewed
