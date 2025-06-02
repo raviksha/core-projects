@@ -204,6 +204,11 @@ Tree Traversal
     Medium:
         Leet code 102. Binary Tree Level Order Traversal
         Leet code 199. Binary Tree Right Side View
+        Leet code 117. Populating Next Right Pointers in Each Node II
+        Leet code 437. Path Sum III ######## TO REVISIT
+        Leet code 105. Construct Binary Tree from Preorder and Inorder Traversal
+        Leet code 98. Validate Binary Search Tree
+
 
 Sliding Window / Two pointers
     Easy:

@@ -49,6 +49,11 @@ public class BinaryTree {
 
     }
 
+    /*
+        Tree is built using Insert Order and not any of the traversal order like:
+        In Order, Pre Order, Post Order or Level Order
+     */
+
     public void put(int data) {
         if (root == null) {
             root = new TreeNode(data);
@@ -58,6 +63,7 @@ public class BinaryTree {
     }
 
     /*
+
         Time complexity: O(log n) n is the height of the tree
                          O(n): Worst case when the tree is skewed
 
