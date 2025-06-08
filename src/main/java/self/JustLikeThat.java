@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -54,7 +55,14 @@ public class JustLikeThat {
         mid = (low + (high - low)) /2;
         System.out.println("Mid V2: " + mid);
 
+        List<Integer> treeL = new ArrayList<>();
+        treeL.add(1);
+        treeL.add(2);
+        treeL.add(3);
 
+        Iterator<Integer> iterator = treeL.iterator();
+
+        System.out.println("iterator.next(): " + iterator.next());
 
 
     }

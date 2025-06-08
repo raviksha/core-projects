@@ -5,10 +5,12 @@ import org.self.yahoo.leetcode.binarytrees.TreeNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Medium {
 
@@ -237,6 +239,83 @@ public class Medium {
         return root;
     }
 
+    private static boolean testValidateBinarySearchTree(TreeNode root) {
+        List<Integer> treeL = new ArrayList<>();
+        populateBST(root, treeL);
+        int prev = treeL.get(0);
+
+        for (int i = 1; i < treeL.size(); i++) {
+            int currVal = treeL.get(i);
+
+            if (prev >= currVal) {
+                return false;
+            }
+            prev = currVal;
+        }
+
+        return true;
+    }
+
+    private static void populateBST(TreeNode node, List<Integer> treeL) {
+        if (node == null) {
+            return;
+        }
+        populateBST(node.left, treeL);
+        treeL.add(node.val);
+        populateBST(node.right, treeL);
+    }
+
+    private static int testKthSmallestElementInBSTV1(TreeNode root, int k) {
+        List<Integer> treeList = new ArrayList<>();
+        populateBST(root, treeList);
+        System.out.println("treeList: " + treeList);
+        return treeList.get(k -1);
+    }
+
+
+    static int largestK = -1;
+    static int count = 0;
+    private static void testKthSmallestElementInBSTV2(TreeNode node, int k) {
+        if (node == null) {
+            return;
+        }
+        testKthSmallestElementInBSTV2(node.left, k);
+        count++;
+        if (count == k) {
+            largestK = node.val;
+        }
+        testKthSmallestElementInBSTV2(node.right, k);
+    }
+
+    private static void testBinarySearchTreeIteratorV1(TreeNode root) {
+
+        BSTIterator bSTIterator = new BSTIterator(root);
+        System.out.println("testBinarySearchTreeIteratorV1......");
+        System.out.println(bSTIterator.next() == 3);   // return 3
+        System.out.println(bSTIterator.next() == 7);   // return 7
+        System.out.println(bSTIterator.hasNext() + " true"); // return True
+        System.out.println(bSTIterator.next() == 9);    // return 9
+        System.out.println(bSTIterator.hasNext() +  " true"); // return True
+        System.out.println(bSTIterator.next() == 15);    // return 15
+        System.out.println(bSTIterator.hasNext() + " true"); // return True
+        System.out.println(bSTIterator.next() == 20);    // return 20
+        System.out.println(bSTIterator.hasNext() + " false"); // return False
+    }
+
+    private static void testBinarySearchTreeIteratorV2(TreeNode root) {
+        BSTIteratorV2 bSTIterator = new BSTIteratorV2(root);
+        System.out.println("testBinarySearchTreeIteratorV2......");
+        System.out.println(bSTIterator.next() == 3);   // return 3
+        System.out.println(bSTIterator.next() == 7);   // return 7
+        System.out.println(bSTIterator.hasNext() + " true"); // return True
+        System.out.println(bSTIterator.next() == 9);    // return 9
+        System.out.println(bSTIterator.hasNext() +  " true"); // return True
+        System.out.println(bSTIterator.next() == 15);    // return 15
+        System.out.println(bSTIterator.hasNext() + " true"); // return True
+        System.out.println(bSTIterator.next() == 20);    // return 20
+        System.out.println(bSTIterator.hasNext() + " false"); // return False
+    }
+
 
     public static void main(String[] args) {
         System.out.println("Medium:  + Tree Traversal - Level Order");
@@ -434,37 +513,144 @@ public class Medium {
         root.right = new TreeNode(3);
         boolean isValidBST = testValidateBinarySearchTree(root);
         System.out.println("isValidBST: " + isValidBST);
+
+        // Leet code 230. Kth Smallest Element in a BST
+        BinaryTree.initRoot();
+        binaryTreeR = new BinaryTree();
+        binaryTreeR.put(3);
+        root = binaryTree.getRoot();
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(4);
+
+        root.left.right = new TreeNode(4);
+        int k = 1;
+
+        /*
+            Using the InOrder traversal approach
+
+            Time complexity: O(n): Traverses through each node of the tree
+
+            Space complexity: O(n)
+                              O(h): Recursion stack = Height of the tree
+                              O(n): Storing all n elements on the List
+         */
+        int kL = testKthSmallestElementInBSTV1(root, k);
+        System.out.println("testKthSmallestElementInBSTV1: " + kL);
+
+        BinaryTree.initRoot();
+        binaryTreeR = new BinaryTree();
+        binaryTreeR.put(3);
+        root = binaryTree.getRoot();
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(4);
+
+        root.left.right = new TreeNode(4);
+        k = 1;
+
+        /*
+            Using recursion for InOrder traversal
+
+            Time complexity: O(log n): Balanced binary tree
+                             O(n): Worst case, skewed binary tree
+
+            Space complexity: O(log n): Recursion stack
+                              O(n): n level depth recursion stack when the tree is skewed
+         */
+        testKthSmallestElementInBSTV2(root, k);
+        System.out.println("testKthSmallestElementInBSTV2: " + largestK);
+
+        // Leet code 173. Binary Search Tree Iterator
+        BinaryTree.initRoot();
+        binaryTreeR = new BinaryTree();
+        binaryTreeR.put(7);
+        root = binaryTree.getRoot();
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(15);
+
+        root.right.left = new TreeNode(9);
+        root.right.right = new TreeNode(20);
+        /*
+            Uses the approach where the elements of the BST are added to a List in InOrder traversal
+            This ensures that all the elements are in increasing order with index 0 as smallest and index n having the largest
+
+            Time complexity: O(1): next() and hasNext() operate at the time complexity of O(1)
+
+            Space complexity: O(n): Extra space required to store the n elements of thr binary tree
+         */
+        testBinarySearchTreeIteratorV1(root);
+
+        /*
+            Uses the approach of using a stack which at any given time stores only the left nodes from the BST root node
+            Works on the design of In order traversal where the tree values are traversed from left to right in increasing order of values
+            It starts by adding all the left nodes beginning  from root while top element of the stack will always be the smallest node in the traversed BST
+            While traversing it checks if a right node exists then it recursively adds all the left nodes from the right subtree
+
+            Time complexity: O(1) Avg case for next() and hasNext()
+
+            Space complexity: O(H): At any time the stack contains the left nodes from the given BST root.
+         */
+        testBinarySearchTreeIteratorV2(root);
+
     }
-
-    private static boolean testValidateBinarySearchTree(TreeNode root) {
-        List<Integer> treeL = new ArrayList<>();
-        populateBST(root, treeL);
-        int prev = treeL.get(0);
-
-        for (int i = 1; i < treeL.size(); i++) {
-            int currVal = treeL.get(i);
-
-            if (prev >= currVal) {
-                return false;
-            }
-            prev = currVal;
-        }
-
-        return true;
-    }
-
-    private static void populateBST(TreeNode node, List<Integer> treeL) {
-        if (node == null) {
-            return;
-        }
-        populateBST(node.left, treeL);
-        treeL.add(node.val);
-        populateBST(node.right, treeL);
-    }
-
 
 }
 
+class BSTIteratorV2 {
+    Stack<TreeNode> stack = new Stack<>();
+
+    public BSTIteratorV2(TreeNode root) {
+        loadLeftTreeL(root);
+    }
+
+    public int next() {
+        TreeNode currNode = stack.pop();
+
+        if (currNode.right != null) {
+            loadLeftTreeL(currNode.right);
+        }
+        return currNode.val;
+    }
+
+    public boolean hasNext() {
+        return !stack.isEmpty();
+    }
+
+    private void loadLeftTreeL(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        stack.push(node);
+        loadLeftTreeL(node.left);
+    }
+}
+
+
+
+
+class BSTIterator {
+    List<Integer> treeL = new ArrayList<>();
+    int index = -1;
+    public BSTIterator(TreeNode root) {
+        loadTreeL(root);
+    }
+
+    public int next() {
+        return treeL.get(++index);
+    }
+
+    public boolean hasNext() {
+        return index + 1 < treeL.size();
+    }
+
+    private void loadTreeL(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        loadTreeL(node.left);
+        treeL.add(node.val);
+        loadTreeL(node.right);
+    }
+}
 
 
 
