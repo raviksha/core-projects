@@ -1,6 +1,7 @@
 package org.self.yahoo.leetcode.orderedset;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -34,6 +35,20 @@ public class Medium {
         System.out.println(myCalendarV3.book(15, 25) + ": false");
         System.out.println(myCalendarV3.book(20, 30) + ": true");
     }
+
+
+    private static void testMyCalendar2V1() {
+        //[[], [10, 20], [50, 60], [10, 40], [5, 15], [5, 10], [25, 55]]
+        MyCalendar2V2 myCalendarTwo = new MyCalendar2V2();
+        System.out.println("testMyCalendar2V1: ...");
+        System.out.println("true: " + myCalendarTwo.book(10, 20)); // return True, The event can be booked.
+        System.out.println("true: " + myCalendarTwo.book(50, 60)); // return True, The event can be booked.
+        System.out.println("true: " + myCalendarTwo.book(10, 40)); // return True, The event can be double booked.
+        System.out.println("false: " + myCalendarTwo.book(5, 15));  // return False, The event cannot be booked, because it would result in a triple booking.
+        System.out.println("true: " + myCalendarTwo.book(5, 10)); // return True, The event can be booked, as it does not use time 10 which is already double booked.
+        System.out.println("true: " + myCalendarTwo.book(25, 55)); // return True, The event can be booked, as the time in [25, 40) will be double booked with the third event, the time [40, 50) will be single booked, and the time [50, 55) will be double booked with the second event.
+    }
+
     public static void main(String[] args) {
 
         System.out.println("Medium: Ordered Set");
@@ -99,29 +114,98 @@ public class Medium {
          */
         testMyCalendar2V1();
 
+        // 2034. Stock Price Fluctuation
+        /*
+            Using :
+                TreeMap: Store the stock price in sorted order
+                HashMap: Store the mapping between the Timestamp => Price
+
+            Time complexity: O(log n)
+                             Operation on HashMap i.e get() put() etc will take O(1) t/c
+                             Operations on TreeMap i.e firstKey() lastKey() and put(): O(log n)
+                             Dominating t/c: O(log n)
+
+            Space complexity: O(n): Extra space required to store the mapping of TS and Price for all the n all the events
+         */
+        testStockPriceFluctuationV1();
+    }
+
+    private static void testStockPriceFluctuationV1() {
+        // ["StockPrice","update","update","current","maximum","update","maximum","update","minimum"]
+        // [   [],         [1,10]  ,[2,5],   [],       [],     [1,3],     [],      [4,2]     ,[]]
+        // [  null,         null,    null,    5,      10,       null,     5,        null,      2]
+        System.out.println("testStockPriceFluctuationV1: ");
+        StockPrice stockPrice = new StockPrice();
+        stockPrice.update(1,10);
+        stockPrice.update(2,5);
+        System.out.println(stockPrice.current() == 5);
+        System.out.println(stockPrice.maximum() == 10);
+        stockPrice.update(1,3);
+        System.out.println(stockPrice.maximum() == 5);
+        stockPrice.update(4,2);
+        System.out.println(stockPrice.minimum() == 2);
+    }
+}
+
+/**
+ * Your StockPrice object will be instantiated and called as such:
+ * StockPrice obj = new StockPrice();
+ * obj.update(timestamp,price);
+ * int param_2 = obj.current();
+ * int param_3 = obj.maximum();
+ * int param_4 = obj.minimum();
+ */
+
+class StockPrice {
+    Map<Integer, Integer> stockMap = new HashMap<>();
+    TreeMap<Integer, Integer> priceMap = new TreeMap<>();
+    int currentTS = 0;
+
+    public StockPrice() {
 
     }
 
-    private static void testMyCalendar2V1() {
-        //[[], [10, 20], [50, 60], [10, 40], [5, 15], [5, 10], [25, 55]]
-        MyCalendar2V2 myCalendarTwo = new MyCalendar2V2();
-        System.out.println("testMyCalendar2V1: ...");
-        System.out.println("true: " + myCalendarTwo.book(10, 20)); // return True, The event can be booked.
-        System.out.println("true: " + myCalendarTwo.book(50, 60)); // return True, The event can be booked.
-        System.out.println("true: " + myCalendarTwo.book(10, 40)); // return True, The event can be double booked.
-        System.out.println("false: " + myCalendarTwo.book(5, 15));  // return False, The event cannot be booked, because it would result in a triple booking.
-        System.out.println("true: " + myCalendarTwo.book(5, 10)); // return True, The event can be booked, as it does not use time 10 which is already double booked.
-        System.out.println("true: " + myCalendarTwo.book(25, 55)); // return True, The event can be booked, as the time in [25, 40) will be double booked with the third event, the time [40, 50) will be single booked, and the time [50, 55) will be double booked with the second event.
+    public void update(int timestamp, int price) {
+
+        int currPrice = stockMap.getOrDefault(timestamp, 0);
+        priceMap.put(price, priceMap.getOrDefault(price, 0) + 1);
+
+        if (currPrice == 0) { // New stock price entry
+            currentTS = Math.max(currentTS, timestamp);
+        } else {
+            int count = priceMap.getOrDefault(currPrice, 0);
+            count = count - 1;
+            if (count <= 0) {
+                priceMap.remove(currPrice);
+            } else {
+                priceMap.put(currPrice, priceMap.getOrDefault(currPrice, 0) - 1);
+            }
+        }
+
+        stockMap.put(timestamp, price);
+
     }
 
+    public int current() {
+        return stockMap.get(currentTS);
+    }
+
+    public int maximum() {
+        return priceMap.lastKey();
+    }
+
+    public int minimum() {
+        return priceMap.firstKey();
+    }
 
 }
+
 
 class MyCalendar2V2 {
 
     Map<Integer, Integer> eventMap;
 
-    public MyCalendar2V2 () {
+    public MyCalendar2V2() {
         eventMap = new TreeMap<>();
     }
 
@@ -148,7 +232,7 @@ class MyCalendarV3 {
 
     TreeMap<Integer, Integer> eventMap;
 
-    public MyCalendarV3 () {
+    public MyCalendarV3() {
         eventMap = new TreeMap<>();
     }
     /*
@@ -172,12 +256,11 @@ class MyCalendarV3 {
 }
 
 
-
 class MyCalendarV2 {
 
     Map<Integer, Integer> eventMap;
 
-    public MyCalendarV2 () {
+    public MyCalendarV2() {
         eventMap = new TreeMap<>();
     }
 
@@ -201,6 +284,7 @@ class MyCalendarV2 {
 class Event {
     int start;
     int end;
+
     public Event(int start, int end) {
         this.start = start;
         this.end = end;
@@ -210,7 +294,8 @@ class Event {
 class MyCalendarV1 {
 
     List<Event> eventsL = new ArrayList<>();
-    public MyCalendarV1 () {
+
+    public MyCalendarV1() {
 
     }
 

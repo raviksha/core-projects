@@ -215,6 +215,13 @@ BST: Ordered Set
     Medium:
         Leet code 729. My Calendar I
         Leet code 731. My Calendar II
+        Leet code 2034. Stock Price Fluctuation
+
+Trie:
+    Medium:
+        Leet code 211. Design Add and Search Words Data Structure
+        Leet code 208. Implement Trie (Prefix Tree)
+        Leet code 1268. Search Suggestions System
 
 Sliding Window / Two pointers
     Easy:
