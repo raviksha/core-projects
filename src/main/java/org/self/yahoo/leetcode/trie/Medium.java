@@ -1,6 +1,7 @@
 package org.self.yahoo.leetcode.trie;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -259,6 +260,31 @@ public class Medium {
         System.out.println("trieV2.startsWith: abc " + isStartWith);
     }
 
+
+    private static void testSearchSuggestionSystemV1() {
+        TrieV2 trieV2 = new TrieV2();
+        //["mobile","mouse","moneypot","monitor","mousepad"]
+        trieV2.insert("mobile");
+        trieV2.insert("mouse");
+        trieV2.insert("moneypot");
+        trieV2.insert("monitor");
+        trieV2.insert("mousepad");
+
+
+        List<List<String>> result = new ArrayList<>();
+        String searchWord = "mouse";
+
+        StringBuilder searchStr = new StringBuilder();
+
+        for (int i = 0; i < searchWord.length(); i++) {
+            searchStr.append(searchWord.charAt(i));
+            var childList = trieV2.getSearchSuggestions(searchStr.toString());
+            result.add(childList);
+        }
+
+        System.out.println("testSearchSuggestionSystemV1: final auto suggestion list: " + result);
+    }
+
     public static void main(String[] args) {
         System.out.println("Trie medium ...");
         // Leet code 208. Implement Trie (Prefix Tree)
@@ -356,36 +382,79 @@ public class Medium {
                               Result list storing TOP k strings each with length l
                               Recursion: Stack space for DFS recursion is at most O(l) depth, negligible compared to original list
          */
-
         testSearchSuggestionSystemV1();
+        /*
+            Uses the approach of using a Binary search
+
+            Time complexity: O(n log n) +  O(s) *  O(n) = O(n log n + s + n)
+                             n = number of elements in the product list
+                             s = length of the search string
+                             O(n log n): Sorting the product list array
+                             O(s): Looping over the search string of length s
+                             O(n): Total n iterations over product list as it keeps track of the elements which is already traversed
+                             and needs not be visited again for the next character typed for the search string
+
+            Space complexity: O(k * s) => O(s) (Since k is the constant for all prefix search suggestions)
+                              k = max number of suggestions per prefix
+                              s = length of the search string
+                              Since k is the same for all prefix search: O(1)
+                              Concluding: O(s)
+
+         */
+
+        String [] productList = {"mobile","mouse","moneypot","monitor","mousepad"};
+        String searchWOrd = "mouse";
+//        String [] productList = {"havana"};
+//        String searchWOrd = "tatiana";
+        List<List<String>> result = testSearchSuggestionSystemV2(productList, searchWOrd);
+        System.out.println("testSearchSuggestionSystemV2: " + result);
     }
 
-    private static void testSearchSuggestionSystemV1() {
-        TrieV2 trieV2 = new TrieV2();
-        //["mobile","mouse","moneypot","monitor","mousepad"]
-        trieV2.insert("mobile");
-        trieV2.insert("mouse");
-        trieV2.insert("moneypot");
-        trieV2.insert("monitor");
-        trieV2.insert("mousepad");
-
-
+    private static List<List<String>> testSearchSuggestionSystemV2(String[] productList, String searchWOrd) {
         List<List<String>> result = new ArrayList<>();
-        String searchWord = "mouse";
+        Arrays.sort(productList); // O(n log n)
+        StringBuilder prefix = new StringBuilder();
+        int left = 0;
+        for (int i = 0; i < searchWOrd.length(); i++) { // O(s)
+            List<String> prefixList = new ArrayList<>();
+            prefix.append(searchWOrd.charAt(i));
+            int k = 3;
+            left = findMatchingSuggestions(prefix.toString(), productList, k, left, prefixList); // O(log p * log s)
+            result.add(prefixList);
+        }
+        return result;
+    }
 
-        StringBuilder searchStr = new StringBuilder();
+    private static int findMatchingSuggestions(String prefix, String[] productList, int k, int left, List<String> prefixList) {
+        int right = productList.length -1;
 
-        for (int i = 0; i < searchWord.length(); i++) {
-            searchStr.append(searchWord.charAt(i));
-            var childList = trieV2.getSearchSuggestions(searchStr.toString());
-            result.add(childList);
+        while ((left < right) && (!productList[left].startsWith(prefix))) { // O(log s)
+            left++;
         }
 
-        System.out.println("testSearchSuggestionSystemV1: final auto suggestion list: " + result);
+        while((right > left) && (!productList[right].startsWith(prefix))) {
+            right--;
+
+        }
+        if (productList[left].startsWith(prefix) && productList[right].startsWith(prefix)) {
+            for (int i = left; i <= right; i++) {
+                prefixList.add(productList[i]);
+                if (prefixList.size() == k) {
+                    break;
+                }
+            }
+
+        }
+        return left;
     }
-
-
 }
+
+
+
+
+
+
+
 
 
 
