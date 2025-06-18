@@ -64,6 +64,25 @@ public class JustLikeThat {
 
         System.out.println("iterator.next(): " + iterator.next());
 
+        // Test Priority Queue
+
+        testPriorityQueue();
+
+
+    }
+
+    private static void testPriorityQueue() {
+        Comparator<Integer> comparator = Comparator.reverseOrder();
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(comparator);
+        priorityQueue.add(1);
+        priorityQueue.add(2);
+        priorityQueue.add(3);
+        priorityQueue.add(4);
+
+        while (!priorityQueue.isEmpty()) {
+            System.out.println("PQ: " + priorityQueue.poll());
+        }
+
 
     }
 

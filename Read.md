@@ -223,6 +223,11 @@ Trie:
         Leet code 208. Implement Trie (Prefix Tree)
         Leet code 1268. Search Suggestions System
 
+Heap:
+    Medium:
+        Leet code 1642. Furthest Building You Can Reach
+        Leet code 1834. Single-Threaded CPU
+
 Sliding Window / Two pointers
     Easy:
         Leet code 88. Merge Sorted Array
