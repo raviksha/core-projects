@@ -79,6 +79,7 @@ public class JustLikeThat {
         priorityQueue.add(3);
         priorityQueue.add(4);
 
+        System.out.println(priorityQueue);
         while (!priorityQueue.isEmpty()) {
             System.out.println("PQ: " + priorityQueue.poll());
         }

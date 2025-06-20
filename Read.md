@@ -201,6 +201,8 @@ Tree Traversal
         Leet code 144. Binary Tree Preorder Traversal
         Leet code 108. Convert Sorted Array to Binary Search Tree
         Leet code 94. Binary Tree Inorder Traversal
+        Leet code 145. Binary Tree Postorder Traversal
+        Leet code 226. Invert Binary Tree
     Medium:
         Leet code 102. Binary Tree Level Order Traversal
         Leet code 199. Binary Tree Right Side View
@@ -227,6 +229,10 @@ Heap:
     Medium:
         Leet code 1642. Furthest Building You Can Reach
         Leet code 1834. Single-Threaded CPU
+
+Top K elements:
+    Easy:
+        Leet code 703. Kth Largest Element in a Stream
 
 Sliding Window / Two pointers
     Easy:

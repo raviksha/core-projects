@@ -50,7 +50,7 @@ public class BinaryTree {
     }
 
     /*
-        Tree is built using Insert Order and not any of the traversal order like:
+        Tree is built using insert-order and not any of the traversal order like:
         In Order, Pre Order, Post Order or Level Order
      */
 
