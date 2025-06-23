@@ -34,6 +34,28 @@ public class Easy2 {
         return node;
     }
 
+    static int maxGlobalTreeDiameter = 0;
+    private static int
+    testDiameterOfBTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        getTreeDiameter(root);
+        return maxGlobalTreeDiameter;
+    }
+
+    private static int getTreeDiameter(TreeNode node) {
+
+        if (node == null) {
+            return 0;
+        }
+
+        int leftHeight = getTreeDiameter(node.left);
+        int rightHeight = getTreeDiameter(node.right);
+        maxGlobalTreeDiameter = Math.max(maxGlobalTreeDiameter, leftHeight + rightHeight);
+        return 1 + Math.max(leftHeight , rightHeight);
+    }
+
     public static void main(String[] args) {
         System.out.println("Easy2 Tree traversal post order ... ");
 
@@ -93,27 +115,50 @@ public class Easy2 {
          */
         var treeDiameter = testDiameterOfBTree(root);
         System.out.println("testDiameterOfBTree: " + treeDiameter);
+
+        // Leet code 101. Symmetric Tree
+
+        BinaryTree.initRoot();
+        binaryTree = new BinaryTree();
+        binaryTree.put(1);
+        root = binaryTree.getRoot();
+        root.right = new TreeNode(2);
+        root.left = new TreeNode(2);
+
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(4);
+
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(3);
+
+        /*
+            Time complexity: O(n): Traversing through all the n nodes of the BTree
+
+            Space complexity: O(log n): Recursion call stack, worst case O(n) if the tree is skewed
+         */
+        boolean isSymmetric = testSymmetricTree(root);
+        System.out.println("testSymmetricTree: " + isSymmetric);
     }
 
-    static int maxGlobalTreeDiameter = 0;
-    private static int testDiameterOfBTree(TreeNode root) {
+    private static boolean testSymmetricTree(TreeNode root) {
         if (root == null) {
-            return 0;
+            return true;
         }
-        getTreeDiameter(root);
-        return maxGlobalTreeDiameter;
+        return testSymmetricTree(root.left, root.right);
     }
 
-    private static int getTreeDiameter(TreeNode node) {
-
-        if (node == null) {
-            return 0;
+    private static boolean testSymmetricTree(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        }
+        if (left == null || right == null) {
+            return false;
+        }
+        if (left.val != right.val) {
+            return false;
         }
 
-        int leftHeight = getTreeDiameter(node.left);
-        int rightHeight = getTreeDiameter(node.right);
-        maxGlobalTreeDiameter = Math.max(maxGlobalTreeDiameter, leftHeight + rightHeight);
-        return 1 + Math.max(leftHeight , rightHeight);
+        return testSymmetricTree(left.left, right.right) && testSymmetricTree(left.right, right.left);
     }
 
 

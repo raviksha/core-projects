@@ -203,6 +203,7 @@ Tree Traversal
         Leet code 94. Binary Tree Inorder Traversal
         Leet code 145. Binary Tree Postorder Traversal
         Leet code 226. Invert Binary Tree
+        Leet code 101. Symmetric Tree
     Medium:
         Leet code 102. Binary Tree Level Order Traversal
         Leet code 199. Binary Tree Right Side View
@@ -233,6 +234,18 @@ Heap:
 Top K elements:
     Easy:
         Leet code 703. Kth Largest Element in a Stream
+
+Bit Manipulation
+    Easy:
+        Leet code 136. Single Number
+        Leet code 338. Counting Bits
+    Medium:
+        Leet code 260. Single Number III
+
+Top K elements
+    Medium:
+        Leet code 347. Top K Frequent Elements
+        Leet code 973. K Closest Points to Origin
 
 Sliding Window / Two pointers
     Easy:
