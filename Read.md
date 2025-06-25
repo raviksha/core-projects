@@ -247,6 +247,11 @@ Top K elements
         Leet code 347. Top K Frequent Elements
         Leet code 973. K Closest Points to Origin
 
+Intervals
+    Medium:
+        Leet code 56. Merge Intervals
+        Leet code 57. Insert Interval
+
 Sliding Window / Two pointers
     Easy:
         Leet code 88. Merge Sorted Array
