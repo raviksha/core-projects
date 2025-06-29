@@ -41,6 +41,50 @@ public class Medium {
 
     }
 
+    private static int[][] testInsertIntervals(int[][] intervals, int[] newInterval) {
+        if (intervals.length == 0 && newInterval.length > 0) {
+            return new int[][] {newInterval};
+        }
+
+        List<int []> list = new ArrayList<>();
+
+        int i = 0;
+        int n = intervals.length;
+
+        // Add all the intervals which ends before the newInterval starts
+        while (i < n && intervals[i][1] < newInterval[0]) {
+            list.add(intervals[i]);
+            i++;
+        }
+
+        // Add all the intervals where the begin time of intervals[i] <= newInterval[1] end time
+
+        int mergeBeginIndex = newInterval[0];
+        int mergeEndIndex = newInterval[1];
+
+        while (i < n && intervals[i][0] <= newInterval[1]) {
+            mergeBeginIndex = Math.min(intervals[i][0], mergeBeginIndex);
+            mergeEndIndex = Math.max(intervals[i][1], mergeEndIndex);
+            i++;
+        }
+        list.add(new int[] {mergeBeginIndex, mergeEndIndex});
+
+        while (i < n) {
+            list.add(intervals[i]);
+            i++;
+        }
+
+        int [] [] result = new int[list.size()][2];
+        int index = 0;
+
+        for (int[] item : list) {
+            result[index] = item;
+            index++;
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         System.out.println("Intervals medium ....");
 
@@ -94,50 +138,47 @@ public class Medium {
         for (int[] item : result) {
             System.out.println(Arrays.toString(item));
         }
+
+
+        // Leet code 435. Non-overlapping Intervals
+        intervals = new int[][] {{1,2},{2,3},{3,4},{1,3}};
+
+        /*
+            Approach to solve this interval problem is as follows:
+            1. Sort the interval [] based on end time
+            2. Loop through all the intervals and if the start time of the next interval is >= end time of the previous interval and then count the interval in;
+            3. Return the difference between the total intervals - intervals counted as valid
+
+            Time complexity: O(n log n)
+                            Sort the intervals [] : O(n log n): Merge sort
+                            Iterate through all the intervals: O(n)
+                            Concluding t/c: O(n log n)
+
+           Space complexity: O(1): No extra compute space used
+         */
+        int eraseCount = testNonOverlappingIntervals(intervals);
+        System.out.println("testNonOverlappingIntervals: " + eraseCount);
     }
 
-    private static int[][] testInsertIntervals(int[][] intervals, int[] newInterval) {
-        if (intervals.length == 0 && newInterval.length > 0) {
-            return new int[][] {newInterval};
+    private static int testNonOverlappingIntervals(int[][] intervals) {
+        if (intervals.length == 0) {
+            return 0;
         }
+        Comparator<int []> comparator = Comparator.comparingInt((a -> a[1]));
+        Arrays.sort(intervals, comparator); // O(n log n)
+        int count = 1;
 
-        List<int []> list = new ArrayList<>();
+        int index  = 0;
+        for (int i = 1; i < intervals.length; i++) { // O(n)
+            int currEnd = intervals[index][1];
+            int nextStart = intervals[i][0];
 
-        int i = 0;
-        int n = intervals.length;
-
-        // Add all the intervals which ends before the newInterval starts
-        while (i < n && intervals[i][1] < newInterval[0]) {
-            list.add(intervals[i]);
-            i++;
+            if (nextStart >= currEnd) {
+                count++;
+                index = i;
+         }
         }
-
-        // Add all the intervals where the begin time of intervals[i] <= newInterval[1] end time
-
-        int mergeBeginIndex = newInterval[0];
-        int mergeEndIndex = newInterval[1];
-
-        while (i < n && intervals[i][0] <= newInterval[1]) {
-            mergeBeginIndex = Math.min(intervals[i][0], mergeBeginIndex);
-            mergeEndIndex = Math.max(intervals[i][1], mergeEndIndex);
-            i++;
-        }
-        list.add(new int[] {mergeBeginIndex, mergeEndIndex});
-
-        while (i < n) {
-            list.add(intervals[i]);
-            i++;
-        }
-
-        int [] [] result = new int[list.size()][2];
-        int index = 0;
-
-        for (int[] item : list) {
-            result[index] = item;
-            index++;
-        }
-
-        return result;
+        return intervals.length - count;
     }
 
 

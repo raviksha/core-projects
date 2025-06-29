@@ -251,6 +251,16 @@ Intervals
     Medium:
         Leet code 56. Merge Intervals
         Leet code 57. Insert Interval
+        Leet code 435. Non-overlapping Intervals
+
+Matrix
+    Medium:
+       Leet code 54. Spiral Matrix
+       Leet code 48. Rotate Image
+       Leet code 73. Set Matrix Zeroes
+
+K-Way Merge
+       Leet code 378. Kth Smallest Element in a Sorted Matrix
 
 Sliding Window / Two pointers
     Easy:
