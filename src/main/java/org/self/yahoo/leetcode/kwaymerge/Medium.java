@@ -21,7 +21,7 @@ public class Medium {
          */
         int result = testKSmallestInMatrixV1(matrix, k);
         System.out.println("testKSmallestInMatrixV1: " + result);
-        
+
     }
 
     private static int testKSmallestInMatrixV1(int[][] matrix, int k) {

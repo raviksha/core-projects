@@ -262,6 +262,12 @@ Matrix
 K-Way Merge
        Leet code 378. Kth Smallest Element in a Sorted Matrix
 
+
+Data Structure Design
+    Leet code 380. Insert Delete GetRandom O(1)
+    Leet code 146. LRU Cache
+    Leet code 1472. Design Browser History
+
 Sliding Window / Two pointers
     Easy:
         Leet code 88. Merge Sorted Array
