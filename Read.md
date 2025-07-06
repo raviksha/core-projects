@@ -268,6 +268,10 @@ Data Structure Design
     Leet code 146. LRU Cache
     Leet code 1472. Design Browser History
 
+Greedy:
+    Leet code 55. Jump Game
+    Leet code 45. Jump Game II
+
 Sliding Window / Two pointers
     Easy:
         Leet code 88. Merge Sorted Array
