@@ -271,6 +271,8 @@ Data Structure Design
 Greedy:
     Leet code 55. Jump Game
     Leet code 45. Jump Game II
+    Leet code 134. Gas Station
+    Leet code 621. Task Scheduler
 
 Sliding Window / Two pointers
     Easy:
