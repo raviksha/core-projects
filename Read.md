@@ -274,6 +274,11 @@ Greedy:
     Leet code 134. Gas Station
     Leet code 621. Task Scheduler
 
+Depth First Search
+    Leet code 200. Number of Islands
+    Leet code 133. Clone Graph
+    Leet code 130. Surrounded Regions
+
 Sliding Window / Two pointers
     Easy:
         Leet code 88. Merge Sorted Array
