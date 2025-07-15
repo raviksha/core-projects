@@ -278,6 +278,11 @@ Depth First Search
     Leet code 200. Number of Islands
     Leet code 133. Clone Graph
     Leet code 130. Surrounded Regions
+    Leet code 785. Is Graph Bipartite?
+    Leet code 417. Pacific Atlantic Water Flow
+
+Breadth First Search
+    Leet code 994. Rotting Oranges
 
 Sliding Window / Two pointers
     Easy:
