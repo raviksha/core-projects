@@ -281,8 +281,13 @@ Depth First Search
     Leet code 785. Is Graph Bipartite?
     Leet code 417. Pacific Atlantic Water Flow
 
-Breadth First Search
+Breadth-First Search
     Leet code 994. Rotting Oranges
+    Leet code 542. 01 Matrix
+
+Topological sort
+    Leet code 207. Course Schedule
+    Leet code 210. Course Schedule II
 
 Sliding Window / Two pointers
     Easy:
