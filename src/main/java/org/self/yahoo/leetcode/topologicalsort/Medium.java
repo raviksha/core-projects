@@ -31,7 +31,7 @@ public class Medium {
             }
         }
 
-        // Identifies the node to begin the graph traversal. Its all the nodes with inDegree[v] ==0, which are added to the queue
+        // Identifies the node to begin the graph traversal. It's all the nodes with inDegree[v] ==0, which are added to the queue
         for (int i = 0; i < inDegree.length; i++) {
             if (inDegree[i] == 0) {
                 queue.offer(i);

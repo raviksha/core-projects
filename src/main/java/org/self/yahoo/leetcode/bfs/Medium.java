@@ -140,58 +140,6 @@ public class Medium {
         return days;
     }
 
-    public static void main(String[] args) {
-        System.out.println("BFS medium ...");
-
-        // Leet code 994. Rotting Oranges
-        int[][] grid = new int[][]{{2, 1, 1}, {1, 1, 0}, {0, 1, 1}};
-
-                /*
-                        Approach is using a DFS where it begins plotting the reachable neighboring nodes as rotten
-
-                        Time complexity: O(V * E) Each orange cell is visited only once
-
-                        Space complexity: O(V * E)
-                                          Extra compute space for time[][] to store V * E elements
-                                          Recursion call stack can, in the worst case can grow unto V * E  when all oranges are connected to 1 chain
-                 */
-        int noOfDays = testRottingOrangesDFS(grid);
-        System.out.println("testRottingOrangesDFS: " + noOfDays);
-
-        /*
-                Approach is using BFS where each orange next to a rotten orange is put in a queue
-
-                Time complexity: O(m * n) Each element of the grid[][] is visited once
-
-                Space complexity: O(m * n):
-                                  Extra compute space to all the m * n elements in the visited [][] : O(m * n)
-                                  In the worst case, the Queue will hold up to all fresh oranges O(m * n)
-                                  Concluding: O(m * n)
-         */
-
-        noOfDays = testRottingOrangesBFS(grid);
-        System.out.println("testRottingOrangesBFS: " + noOfDays);
-
-        // Leet code 542. 01 Matrix
-        // [[0,0,0],[0,1,0],[1,1,1]]
-        int [][] matrix = new int[][] {{0,0,0},{0,1,0},{1,1,1}};
-        /*
-            Approach is using a multipoint BFS
-
-            Time complexity: O(m * n): Each element of the matrix[][] is visited at most once
-
-            Space complexity: O(m * n)
-                              Extra compute space to store the result distance [][]: O(m * n)
-                              Worst case the queue can end up storing m * n elements if all the elements are 0's
-
-
-         */
-        int [][] result = test01Matrix(matrix);
-        for (int [] arr: result) {
-            System.out.println(Arrays.toString(arr));
-        }
-    }
-
     private static int[][] test01Matrix(int[][] matrix) {
         if (matrix == null || matrix.length == 0) {
             return new int[0][0];
@@ -264,6 +212,60 @@ public class Medium {
         }
         return distance;
     }
+
+    public static void main(String[] args) {
+        System.out.println("BFS medium ...");
+
+        // Leet code 994. Rotting Oranges
+        int[][] grid = new int[][]{{2, 1, 1}, {1, 1, 0}, {0, 1, 1}};
+
+                /*
+                        Approach is using a DFS where it begins plotting the reachable neighboring nodes as rotten
+
+                        Time complexity: O(V * E) Each orange cell is visited only once
+
+                        Space complexity: O(V * E)
+                                          Extra compute space for time[][] to store V * E elements
+                                          Recursion call stack can, in the worst case can grow unto V * E  when all oranges are connected to 1 chain
+                 */
+        int noOfDays = testRottingOrangesDFS(grid);
+        System.out.println("testRottingOrangesDFS: " + noOfDays);
+
+        /*
+                Approach is using BFS where each orange next to a rotten orange is put in a queue
+
+                Time complexity: O(m * n) Each element of the grid[][] is visited once
+
+                Space complexity: O(m * n):
+                                  Extra compute space to all the m * n elements in the visited [][] : O(m * n)
+                                  In the worst case, the Queue will hold up to all fresh oranges O(m * n)
+                                  Concluding: O(m * n)
+         */
+
+        noOfDays = testRottingOrangesBFS(grid);
+        System.out.println("testRottingOrangesBFS: " + noOfDays);
+
+        // Leet code 542. 01 Matrix
+        // [[0,0,0],[0,1,0],[1,1,1]]
+        int [][] matrix = new int[][] {{0,0,0},{0,1,0},{1,1,1}};
+        /*
+            Approach is using a multipoint BFS
+
+            Time complexity: O(m * n): Each element of the matrix[][] is visited at most once
+
+            Space complexity: O(m * n)
+                              Extra compute space to store the result distance [][]: O(m * n)
+                              Worst case the queue can end up storing m * n elements if all the elements are 0's
+
+
+         */
+        int [][] result = test01Matrix(matrix);
+        for (int [] arr: result) {
+            System.out.println(Arrays.toString(arr));
+        }
+    }
+
+
 
 
 }

@@ -289,6 +289,16 @@ Topological sort
     Leet code 207. Course Schedule
     Leet code 210. Course Schedule II
 
+Union Find
+    Leet code 547. Number of Provinces
+    Leet code 684. Redundant Connection
+
+Minimum Spanning Tree
+    Leet code 1584. Min Cost to Connect All Points
+
+Shortest Path
+    Leet code 743. Network Delay Time
+
 Sliding Window / Two pointers
     Easy:
         Leet code 88. Merge Sorted Array
