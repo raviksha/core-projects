@@ -298,6 +298,7 @@ Minimum Spanning Tree
 
 Shortest Path
     Leet code 743. Network Delay Time
+    Leet code 787. Cheapest Flights Within K Stops
 
 Sliding Window / Two pointers
     Easy:
