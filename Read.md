@@ -300,6 +300,20 @@ Shortest Path
     Leet code 743. Network Delay Time
     Leet code 787. Cheapest Flights Within K Stops
 
+Dynamic programming 
+    Leet code 213. House Robber II
+    Leet code 198. House Robber
+    Leet code 494. Target Sum
+    Leet code 322. Coin Change
+    Leet code 518. Coin Change II
+    DP 20: Minimum coin OR Infinite supply pattern
+
+Knapsack DP
+    Leet code 416. Partition Equal Subset Sum
+
+Grind Dynamic Programming 
+    Leet code 70. Climbing Stairs
+
 Sliding Window / Two pointers
     Easy:
         Leet code 88. Merge Sorted Array
