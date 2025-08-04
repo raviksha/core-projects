@@ -40,11 +40,11 @@ public class Medium {
             return dp[n][target];
         }
 
-        int notTake = testCoinChangeII(coins, n - 1, dp, target);
+        int notTake = testCoinChangeIIMemoization(coins, n - 1, dp, target);
         int take = 0;
 
         if (target >= coins[n]) {
-            take = testCoinChangeII(coins, n, dp, target - coins[n]);
+            take = testCoinChangeIIMemoization(coins, n, dp, target - coins[n]);
         }
         dp[n][target] = take + notTake;
         return dp[n][target];

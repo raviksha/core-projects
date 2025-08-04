@@ -29,7 +29,7 @@ public class Medium {
 
             Time complexity: O(n * t) => Number of coins * target
 
-            Space complexity: O(n * t) => dp [][] memoization array + O(n): Recursion stack
+            Space complexity: O(n * t) => dp [][] memoization array + O(t): Recursion stack depth of target depth
                               Final: O(n * t)
          */
         minCoins = testMinCoinInfiniteSupplyMemoization(coins, target, n - 1, dp);

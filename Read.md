@@ -311,6 +311,13 @@ Dynamic programming
 Knapsack DP
     Leet code 416. Partition Equal Subset Sum
 
+
+DP String sub sequences
+    Leet code 1143. Longest Common Subsequence
+    Leet code 516. Longest Palindromic Subsequence
+    Leet code 1312. Minimum Insertion Steps to Make a String Palindrome
+    Leet code 583. Delete Operation for Two Strings
+
 Grind Dynamic Programming 
     Leet code 70. Climbing Stairs
 
