@@ -307,6 +307,8 @@ Dynamic programming
     Leet code 322. Coin Change
     Leet code 518. Coin Change II
     DP 20: Minimum coin OR Infinite supply pattern
+    Leet code 300. Longest Increasing Subsequence
+    Leet code 9. Palindrome Number
 
 Knapsack DP
     Leet code 416. Partition Equal Subset Sum

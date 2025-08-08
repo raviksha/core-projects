@@ -1,4 +1,4 @@
-package org.self.yahoo.leetcode.grind.dp.package30;
+package org.self.yahoo.leetcode.grind.dp.lecture30;
 
 import java.util.Arrays;
 
