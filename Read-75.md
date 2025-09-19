@@ -24,3 +24,23 @@ HashTable
 Two Pointers
     Medium:
         Leet code 11. Container With Most Water
+        Leet code 15. 3Sum
+
+PreFix Sum
+    Medium:
+        Leet code 560. Subarray Sum Equals K
+
+Sliding Window - Fixed Size
+    Medium:
+        Leet code 438. Find All Anagrams in a String
+        Leet code 567. Permutation in String
+
+Sliding Window - Dynamic Size
+    Medium:
+        Leet code 3. Longest Substring Without Repeating Characters
+    Hard:
+        Leet code 76. Minimum Window Substring
+
+Kadane's Algo
+    Medium:
+        Leet code 53. Maximum Subarray
