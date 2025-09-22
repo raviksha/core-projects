@@ -44,3 +44,8 @@ Sliding Window - Dynamic Size
 Kadane's Algo
     Medium:
         Leet code 53. Maximum Subarray
+
+Matrix (2D Array)
+    Medium:
+        Leet code 54. Spiral Matrix
+        Leet code 48. Rotate Image
