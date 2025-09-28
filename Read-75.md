@@ -49,3 +49,17 @@ Matrix (2D Array)
     Medium:
         Leet code 54. Spiral Matrix
         Leet code 48. Rotate Image
+
+Linked List
+    Medium:
+        Leet code 19. Remove Nth Node From End of List
+        Leet code 24. Swap Nodes in Pairs
+        Leet code 2. Add Two Numbers
+
+Fast and Slow Pointers
+    Medium:
+        Leet code 142. Linked List Cycle II
+
+Stacks
+    Medium
+        Leet code 20. Valid Parentheses
