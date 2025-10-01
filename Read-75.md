@@ -61,5 +61,15 @@ Fast and Slow Pointers
         Leet code 142. Linked List Cycle II
 
 Stacks
-    Medium
+    Easy
         Leet code 20. Valid Parentheses
+    Medium
+        Leet code 155. Min Stack
+
+Quick Sort:
+    Medium:
+        Leet code 75. Sort Colors
+
+Binary Search
+    Medium:
+        Leet code 34. Find First and Last Position of Element in Sorted Array

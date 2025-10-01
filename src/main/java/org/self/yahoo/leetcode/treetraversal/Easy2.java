@@ -1,6 +1,4 @@
 package org.self.yahoo.leetcode.treetraversal;
-
-import jdk.nashorn.api.tree.Tree;
 import org.self.yahoo.leetcode.binarytrees.BinaryTree;
 import org.self.yahoo.leetcode.binarytrees.TreeNode;
 

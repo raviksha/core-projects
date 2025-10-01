@@ -1,52 +1,80 @@
 package org.self.yahoo.leetcode75.stacks;
 
-
 import java.util.Stack;
 
 public class Medium {
     public static void main(String[] args) {
-        System.out.println("Stacks .....Medium..");
-        // Leet code 20. Valid Parentheses
-        String str = "()[]{}";
-
+        System.out.println("Stacks .. Medium...");
+        // Leet code 155. Min Stack
         /*
-            Time complexity: O(n) Single pass over the str chars
+            Time complexity: O(1)
+                             pop()/getMin()/top()/push(): Takes O(1) constant time
 
-            Space complexity: O(n) Extra space required to store the open parentheses in a stack
-                                   Worst case when the string consists of only open parentheses
+            Space complexity: O(n + m)
+                              Stack to all current elements in the stack: O(n)
+                              Stack to currentMin: O(m): Worst case when all elements are inserted in descending order
+                              Concluding s/c O(n) => Ignoring m as it is small
          */
-        boolean result = testValidParentheses(str);
-        System.out.println("testValidParentheses: " + result);
+        testMinStack();
     }
 
-    private static boolean testValidParentheses(String str) {
-        if (str.length() % 2 != 0) {
-            return false;
-        }
-
-        Stack<Character> stack = new Stack<>();
-
-        for (char item : str.toCharArray()) {
-            if (item == '(' || item == '[' || item == '{') {
-                stack.push(item);
-                continue;
-            }
-
-            char currItem = stack.isEmpty() ? '0' : stack.peek();
-
-            if (item == ')' && currItem != '(') {
-                return false;
-            }
-
-            if (item == ']' && currItem != '[') {
-                return false;
-            }
-
-            if (item == '}' && currItem != '{') {
-                return false;
-            }
-            stack.pop();
-        }
-        return stack.isEmpty();
+    private static void testMinStack() {
+        MinStack obj = new MinStack();
+        // ["MinStack","push","push","push","getMin","pop","top","getMin"]
+        // [   [],      [-2],  [0],   [-3],   [],      [],  [],     []]
+        obj.push(-2);
+        obj.push(0);
+        obj.push(-3);
+        int min = obj.getMin();
+        System.out.println("min -3: " + (min == -3));
+        obj.pop();
+        int top = obj.top();
+        System.out.println("top 0: " + (top == 0));
+        min = obj.getMin();
+        System.out.println("min -2: " + (min == -2));
     }
 }
+
+
+class MinStack {
+    Stack<Integer> stack = new Stack<Integer>();
+    Stack<Integer> minStack = new Stack<Integer>();
+
+    public MinStack() {
+
+    }
+
+    public void push(int val) {
+        stack.push(val);
+
+        if (minStack.empty() || val <= minStack.peek()) {
+            minStack.push(val);
+        }
+
+    }
+
+    public void pop() {
+        int val = stack.pop();
+
+        if (val == minStack.peek()) {
+            minStack.pop();
+        }
+    }
+
+    public int top() {
+        return stack.peek();
+    }
+
+    public int getMin() {
+        return minStack.peek();
+    }
+}
+//
+///**
+// * Your MinStack object will be instantiated and called as such:
+// * MinStack obj = new MinStack();
+// * obj.push(val);
+// * obj.pop();
+// * int param_3 = obj.top();
+// * int param_4 = obj.getMin();
+// */
