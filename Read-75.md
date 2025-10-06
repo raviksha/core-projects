@@ -73,3 +73,17 @@ Quick Sort:
 Binary Search
     Medium:
         Leet code 34. Find First and Last Position of Element in Sorted Array
+        Leet code 33. Search in Rotated Sorted Array
+
+Backtracking
+    Medium:
+        Leet code 46. Permutations
+        Leet code 78. Subsets
+
+Tree Traversal - Level Order
+    Medium:
+        Leet code 102. Binary Tree Level Order Traversal
+        Leet code 199. Binary Tree Right Side View
+
+Tree Traversal - Pre Order
+        Leet code 144. Binary Tree Preorder Traversal
