@@ -7,6 +7,22 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+/*
+
+    /*
+
+        4
+       / \
+      2   6
+     / \ / \
+    1  3 5  7
+
+    Pre Order : 4, 2, 1, 3, 6, 5, 7
+    Post Order:  1, 3, 2, 5, 7, 6, 4
+    InOrder:  1, 2, 3, 4, 5, 6, 7
+
+*/
+
 public class Medium {
     private static List<List<Integer>> testBinaryTreeLevelOrderTraversal(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();

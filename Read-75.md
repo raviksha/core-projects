@@ -87,3 +87,16 @@ Tree Traversal - Level Order
 
 Tree Traversal - Pre Order
         Leet code 144. Binary Tree Preorder Traversal
+        Leet code 437. Path Sum III
+
+Tree Traversal - In Order
+        Leet code 94. Binary Tree Inorder Traversal
+        Leet code 98. Validate Binary Search Tree
+        Leet code 230. Kth Smallest Element in a BST
+
+Tree Traversal - Post-Order
+        Leet code 145. Binary Tree Postorder Traversal
+        Leet code 236. Lowest Common Ancestor of a Binary Tree
+
+BST / Ordered Set
+        Leet code 729. My Calendar I
