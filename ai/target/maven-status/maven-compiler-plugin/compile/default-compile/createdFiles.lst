@@ -1,0 +1,4 @@
+org/example/weather/OpenWeatherMapClient.class
+org/example/Main.class
+org/example/mcpclient/WeatherMcpClientDemo.class
+org/example/weather/WeatherMcpServer.class
