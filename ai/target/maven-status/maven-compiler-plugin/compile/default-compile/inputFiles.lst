@@ -1,4 +1,5 @@
 /Users/raviksha/Aerospike/core-projects/ai/src/main/java/org/example/Main.java
+/Users/raviksha/Aerospike/core-projects/ai/src/main/java/org/example/auth/mcp/MCPServerAuth.java
 /Users/raviksha/Aerospike/core-projects/ai/src/main/java/org/example/mcpclient/WeatherMcpClientDemo.java
 /Users/raviksha/Aerospike/core-projects/ai/src/main/java/org/example/weather/OpenWeatherMapClient.java
 /Users/raviksha/Aerospike/core-projects/ai/src/main/java/org/example/weather/WeatherMcpServer.java
