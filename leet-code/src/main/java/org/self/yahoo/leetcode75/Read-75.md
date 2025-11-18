@@ -110,3 +110,19 @@ Top K elements
 Intervals
     Leet code 56. Merge Intervals
     Leet code 435. Non-overlapping Intervals
+
+Data Structure Design
+    Leet code 146. LRU Cache
+
+Greedy
+    Leet code 45. Jump Game II
+
+Depth First Search
+    Leet code 200. Number of Islands
+    Leet code 133. Clone Graph
+
+Breadth First Search
+    Leet code 994. Rotting Oranges
+
+Topological Sort
+    Leet code 210. Course Schedule II
